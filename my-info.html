@@ -1,0 +1,13 @@
+<!-- my-info.html -->
+<div ng-controller="MyInfoController">
+    <h2>Your Information</h2>
+    <div ng-if="user">
+        <p>Name: {{ user.firstName }} {{ user.lastName }}</p>
+        <p>Email: {{ user.email }}</p>
+        <p>Phone: {{ user.phone }}</p>
+        <p>Favorite Dish: {{ user.favoriteDish }}</p>
+    </div>
+    <div ng-if="!user">
+        <p>Not Signed Up Yet. <a href="#/sign-up">Sign Up Now!</a></p>
+    </div>
+</div>
