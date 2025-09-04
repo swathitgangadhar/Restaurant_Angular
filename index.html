@@ -1,23 +1,52 @@
-<!-- index.html -->
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" ng-app="CombinedApp">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restaurant</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-    <script src="app.js"></script>
-    <script src="service.js"></script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Combined AngularJS App</title>
+<!-- AngularJS 1.x from CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script>
+<style>
+body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; margin: 0; }
+header { background: #111827; color: #fff; padding: 16px; }
+nav { display: flex; flex-wrap: wrap; gap: 8px; }
+nav a { color: #e5e7eb; text-decoration: none; background:#1f2937; padding: 8px 12px; border-radius:8px; }
+nav a.active { background: #2563eb; color: white; }
+main { padding: 20px; }
+.card { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px; margin: 12px 0; }
+.muted { color:#6b7280; }
+.btn { cursor:pointer; border:0; border-radius:10px; padding:8px 12px; background:#111827; color:#fff; }
+.btn.outline { background:white; color:#111827; border:1px solid #111827; }
+ul { padding-left: 18px; }
+input, select { padding: 8px; border:1px solid #d1d5db; border-radius:8px; }
+.error { color:#b91c1c; }
+.ok { color:#065f46; }
+.grid { display:grid; gap:12px; }
+</style>
 </head>
-<body ng-app="restaurantApp">
+<body>
+<header>
+<h1 style="margin:0 0 8px 0;">Combined AngularJS App</h1>
+<nav>
+<a href="#/lunch-check" ng-class="{active: isActive('/lunch-check')}">Lunch Check</a>
+<a href="#/shopping-list" ng-class="{active: isActive('/shopping-list')}">Shopping List</a>
+<a href="#/narrow-it-down" ng-class="{active: isActive('/narrow-it-down')}">Narrow It Down</a>
+<a href="#/categories" ng-class="{active: isActive('/categories')}">Restaurant Categories & Items</a>
+<a href="#/sign-up" ng-class="{active: isActive('/sign-up')}">Sign Up</a>
+<a href="#/my-info" ng-class="{active: isActive('/my-info')}">My Info</a>
+</nav>
+</header>
+<main ng-controller="ShellController as shell">
+<div ng-view></div>
+</main>
 
-    <div ng-controller="MainController">
-        <h1>Restaurant Website</h1>
-        <button ng-click="goToSignUp()">Sign Up</button>
-        <button ng-click="goToMyInfo()">My Info</button>
-        
-        <div ng-view></div>
-    </div>
 
+<!-- App Modules (keep order: submodules first, then parent) -->
+<script src="js/lunch-check.module.js"></script>
+<script src="js/shopping-list.module.js"></script>
+<script src="js/narrow-it-down.module.js"></script>
+<script src="js/restaurant.module.js"></script>
+<script src="js/combined-app.js"></script>
 </body>
 </html>
